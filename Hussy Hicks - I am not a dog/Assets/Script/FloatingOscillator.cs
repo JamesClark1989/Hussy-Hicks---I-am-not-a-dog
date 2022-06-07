@@ -1,5 +1,3 @@
-
-
 using UnityEngine;
 
 public class FloatingOscillator : MonoBehaviour
@@ -9,8 +7,7 @@ public class FloatingOscillator : MonoBehaviour
     float movementFactor;
     [SerializeField] float period = 2f;
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
         startingPosition = transform.position;
     }

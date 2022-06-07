@@ -18,6 +18,8 @@ public class CharacterRunScript : MonoBehaviour
 
     bool canShoot = true;
 
+    [SerializeField] RunningGame runningGame;
+
     void Update()
     {
 
@@ -45,13 +47,18 @@ public class CharacterRunScript : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
+
+    public void SetupRunningGameScript(RunningGame runningGameScript)
     {
-        
+        runningGame = runningGameScript;
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {        
         if (other.CompareTag("Death"))
         {
-            Destroy(gameObject);
-            GameManager.instance.ReloadAnimation();
+            runningGame.RespawnPlayer();
         }
     }
 
@@ -101,7 +108,7 @@ public class CharacterRunScript : MonoBehaviour
     private IEnumerator DelayedLevelReload()
     {
         yield return new WaitForSeconds(1);
-        GameManager.instance.ReloadAnimation();
+        //GameManager.instance.ReloadAnimation();
     }
 
     public void ParentCamera()

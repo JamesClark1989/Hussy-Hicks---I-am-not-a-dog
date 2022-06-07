@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameObject[] miniGameRooms;
     [SerializeField] int currentMiniGameRoom;
-    [SerializeField] List<int> alreadyPlayedMiniGames = new List<int>();
+    [SerializeField] List<int> selectedMiniGames = new List<int>();
     [SerializeField] GameObject currentMiniGameSpawned;
 
     [SerializeField] Animator transitionAnimation;
@@ -25,8 +25,9 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+
         //LoadHallway();
-        //SelectMiniGameRoom();
+        SelectMiniGames();
         //SpawnMiniGameRoom();
     }
 
@@ -35,15 +36,19 @@ public class GameManager : MonoBehaviour
         Instantiate(transitionHallway);
     }
 
-
-    public void SelectMiniGameRoom()
+    // Save a list of integer values for preselected mini games
+    public void SelectMiniGames()
     {
-        currentMiniGameRoom = Random.Range(0, miniGameRooms.Length);
-        while (alreadyPlayedMiniGames.Contains(currentMiniGameRoom))
+        for(int i = 0; i < 4; i++)
         {
             currentMiniGameRoom = Random.Range(0, miniGameRooms.Length);
+            while (selectedMiniGames.Contains(currentMiniGameRoom))
+            {
+                currentMiniGameRoom = Random.Range(0, miniGameRooms.Length);
+            }
+            selectedMiniGames.Add(currentMiniGameRoom);
         }
-        alreadyPlayedMiniGames.Add(currentMiniGameRoom);
+
     }
 
     public void SpawnMiniGameRoom()
@@ -63,12 +68,8 @@ public class GameManager : MonoBehaviour
         if(level != null) Destroy(level);
     }
 
-    public void ReloadAnimation()
-    {
-        transitionAnimation.SetTrigger("ReloadLevel");
-    }
 
-    public void LoadNewLevel()
+    public void LoadNextLevel()
     {
         transitionAnimation.SetTrigger("ChangeMiniGame");
     }

@@ -8,7 +8,6 @@ public class CauldronIngredientDrop : MonoBehaviour
     {
         if (other.CompareTag("Ingredient"))
         {
-            print("IM IN");
             other.GetComponent<DragWitchIngredient>().CanDropIngredient(true);
 
         }

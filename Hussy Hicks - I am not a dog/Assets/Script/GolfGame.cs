@@ -96,7 +96,7 @@ public class GolfGame : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         UnparentCamera();
-        GameManager.instance.LoadNewLevel();
+        GameManager.instance.LoadNextLevel();
     }
 
     public void UnparentCamera()

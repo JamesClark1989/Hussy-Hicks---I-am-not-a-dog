@@ -62,7 +62,7 @@ public class CthuluGame : MonoBehaviour
     private IEnumerator FinishGame()
     {
         yield return new WaitForSeconds(4);
-        GameManager.instance.LoadNewLevel();
+        GameManager.instance.LoadNextLevel();
     }
 
  

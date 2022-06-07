@@ -2,10 +2,8 @@ using UnityEngine;
 
 public class DragWitchIngredient : MonoBehaviour
 {
-    private Vector3 startPos;
-
+    Vector3 startPos;
     private Vector3 mOffset;
-
     private float mZCood;
 
     [SerializeField] bool inCauldron;
@@ -16,10 +14,28 @@ public class DragWitchIngredient : MonoBehaviour
 
     [SerializeField] WitchGameScript witchGameScript;
 
+    [SerializeField] Transform cauldronPos;
+    public bool goInCauldron = false;
+    [SerializeField] float moveSpeed;
+
     private void Start()
     {
-        witchGameScript = FindObjectOfType<WitchGameScript>();
-        startPos = transform.position;
+        witchGameScript = FindObjectOfType<WitchGameScript>();        
+    }
+
+    public void SetStartPosition(Vector3 newStartPosition)
+    {
+        startPos = newStartPosition;
+        transform.position = startPos;
+    }
+
+    private void Update()
+    {
+        if (goInCauldron)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, cauldronPos.position, moveSpeed * Time.deltaTime);
+            if (transform.position == cauldronPos.position) goInCauldron = false;
+        }
     }
 
     private void OnMouseDown()
@@ -49,8 +65,8 @@ public class DragWitchIngredient : MonoBehaviour
     {
         if (inCauldron)
         {
-            Destroy(gameObject);
             witchGameScript.CheckCurrentIngredient(ingredientName);
+            goInCauldron = true;
         }
         else
         {
@@ -58,7 +74,6 @@ public class DragWitchIngredient : MonoBehaviour
             floatingOscillator.enabled = true;
         }
     }
-
 
     public void CanDropIngredient(bool canDrop)
     {

@@ -6,7 +6,7 @@ public class FinishLevel : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            GameManager.instance.LoadNewLevel();
+            GameManager.instance.LoadNextLevel();
             Destroy(gameObject);
         }
     }

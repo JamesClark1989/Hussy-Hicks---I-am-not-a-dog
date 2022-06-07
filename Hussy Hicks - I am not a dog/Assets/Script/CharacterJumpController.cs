@@ -55,8 +55,8 @@ public class CharacterJumpController : MonoBehaviour
 
         if (other.CompareTag("Death"))
         {
-            Destroy(gameObject);
-            GameManager.instance.ReloadAnimation();
+            //Destroy(gameObject);
+            //GameManager.instance.ReloadAnimation();
         }
     }
 }

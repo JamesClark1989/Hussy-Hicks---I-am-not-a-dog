@@ -51,6 +51,9 @@ ModelImporter:
   - first:
       74: -3125451189326421608
     second: Dive Fail 1
+  - first:
+      74: 2450780417096620964
+    second: Run (1)
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -114,7 +117,7 @@ ModelImporter:
       takeName: Run
       internalID: 0
       firstFrame: 0
-      lastFrame: 80
+      lastFrame: 20
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
