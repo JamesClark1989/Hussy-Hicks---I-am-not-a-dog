@@ -25,15 +25,7 @@ public class CharacterRunCallback : MonoBehaviour
         characterRunScript.RunSetSpeed(newSpeed);
     }
 
-    public void DrawReadyPosition()
-    {
-        characterRunScript.DrawReadyPosition();
-    }
 
-    public void DrawGun()
-    {
-        characterRunScript.DrawGun();
-    }
 
 
 

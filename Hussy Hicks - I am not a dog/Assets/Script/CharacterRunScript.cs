@@ -16,8 +16,6 @@ public class CharacterRunScript : MonoBehaviour
     [SerializeField] Transform spawn;
     public Transform camPos;
 
-    bool canShoot = true;
-
     [SerializeField] RunningGame runningGame;
 
     void Update()
@@ -79,37 +77,7 @@ public class CharacterRunScript : MonoBehaviour
         running = true;
     }
 
-    public void DrawReadyPosition()
-    {
-        anim.SetTrigger("Quick Draw");
-    }
 
-    public void DrawGun()
-    {
-        anim.SetTrigger("Draw");
-    }
-
-    public void CharacterShoot()
-    {
-        if (canShoot)
-        {
-            QuickDrawGame qdg = FindObjectOfType<QuickDrawGame>();
-            qdg.CharacterShootFirst();
-        }
-    }
-
-    public void CowboyShot()
-    {
-        canShoot = false;
-        anim.SetBool("Lost Draw", true);
-        StartCoroutine("DelayedLevelReload");
-    }
-
-    private IEnumerator DelayedLevelReload()
-    {
-        yield return new WaitForSeconds(1);
-        //GameManager.instance.ReloadAnimation();
-    }
 
     public void ParentCamera()
     {

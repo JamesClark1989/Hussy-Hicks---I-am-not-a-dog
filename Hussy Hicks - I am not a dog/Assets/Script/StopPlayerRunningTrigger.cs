@@ -8,7 +8,6 @@ public class StopPlayerRunningTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             characterRunCallback.StopRunning();
-            characterRunCallback.DrawReadyPosition();
             Destroy(gameObject);
         }
     }

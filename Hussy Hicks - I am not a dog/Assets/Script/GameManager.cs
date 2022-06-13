@@ -1,22 +1,28 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    [SerializeField] bool manualGame = false;
+
     [SerializeField] Transform spawnPoint;
-    [SerializeField] GameObject currentCharacter;
+    [SerializeField] GameObject[] hussyHicks;
+    [SerializeField] int currentCharacter;
+    [SerializeField] List<int> savedHicksNumber = new List<int>();
 
     [SerializeField] GameObject[] miniGameRooms;
     [SerializeField] int currentMiniGameRoom;
-    [SerializeField] List<int> selectedMiniGames = new List<int>();
-    [SerializeField] GameObject currentMiniGameSpawned;
 
     [SerializeField] Animator transitionAnimation;
     [SerializeField] GameObject transitionHallway;
     [SerializeField] GameObject mainCamera;
+
+    [SerializeField] TMP_Text savedText;
+    [SerializeField] Animator savedTextAnim;
 
     private void Awake()
     {
@@ -25,38 +31,71 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-
-        //LoadHallway();
-        SelectMiniGames();
-        //SpawnMiniGameRoom();
+        if(!manualGame) RandomiseMiniGames();
+        RandomiseHussyHicks();
     }
 
     public void LoadHallway()
     {
+        savedTextAnim.SetBool("Finished", false);
         Instantiate(transitionHallway);
     }
 
     // Save a list of integer values for preselected mini games
-    public void SelectMiniGames()
+    void RandomiseMiniGames()
     {
-        for(int i = 0; i < 4; i++)
+
+        for (int i = 0; i < miniGameRooms.Length; i++)
         {
-            currentMiniGameRoom = Random.Range(0, miniGameRooms.Length);
-            while (selectedMiniGames.Contains(currentMiniGameRoom))
-            {
-                currentMiniGameRoom = Random.Range(0, miniGameRooms.Length);
-            }
-            selectedMiniGames.Add(currentMiniGameRoom);
+            GameObject temp = miniGameRooms[i];
+            int randomIndex = Random.Range(i, miniGameRooms.Length);
+            miniGameRooms[i] = miniGameRooms[randomIndex];
+            miniGameRooms[randomIndex] = temp;
         }
 
     }
 
+    void RandomiseHussyHicks()
+    {
+        for (int i = 0; i < hussyHicks.Length; i++)
+        {
+            GameObject temp = hussyHicks[i];
+            int randomIndex = Random.Range(i, hussyHicks.Length);
+            hussyHicks[i] = hussyHicks[randomIndex];
+            hussyHicks[randomIndex] = temp;
+        }
+    }
+
+    public void SetNotSavedText()
+    {
+
+
+        string hussyName = hussyHicks[currentCharacter].GetComponent<HussyDetails>().GetHussyName();
+        savedText.SetText(hussyName + "\nNOT SAVED");
+        savedTextAnim.SetBool("Finished", true);
+    }    
+    
+    public void SetSavedText()
+    {
+        string hussyName = hussyHicks[currentCharacter].GetComponent<HussyDetails>().GetHussyName();
+        savedText.SetText(hussyName + "\nSAVED!!!");
+        savedTextAnim.SetBool("Finished", true);
+    }
+
     public void SpawnMiniGameRoom()
     {
-        var hallway = GameObject.FindGameObjectWithTag("Hallway");
-        if(hallway != null) Destroy(hallway.gameObject);
-        mainCamera.SetActive(true);
-        Instantiate(miniGameRooms[currentMiniGameRoom]);
+        if(currentMiniGameRoom < 4)
+        {
+            // Destroy current game
+            var hallway = GameObject.FindGameObjectWithTag("Hallway");
+            if (hallway != null) Destroy(hallway.gameObject);
+
+            mainCamera.SetActive(true);
+            Instantiate(miniGameRooms[currentMiniGameRoom]);
+            currentMiniGameRoom++;
+        }
+        savedTextAnim.SetBool("Finished", false);
+
     }
 
     public void DestroyMiniGame()
@@ -68,6 +107,28 @@ public class GameManager : MonoBehaviour
         if(level != null) Destroy(level);
     }
 
+    public void SavedCurrentHussyHick(bool saved)
+    {
+        // If saved, add character iterator to list
+        if (!savedHicksNumber.Contains(currentCharacter))
+        {
+            if (saved)
+            {
+                savedHicksNumber.Add(currentCharacter);
+                SetSavedText();
+            }
+            else
+            {
+                SetNotSavedText();
+            }            
+        }
+    
+    }
+
+    public void ChangeNextCharacter()
+    {
+        currentCharacter++;
+    }
 
     public void LoadNextLevel()
     {
@@ -76,7 +137,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject GetCurrentCharacter()
     {
-        return currentCharacter;
+        return hussyHicks[currentCharacter];
     }
 
 
@@ -84,7 +145,6 @@ public class GameManager : MonoBehaviour
     {
         return spawnPoint;
     }
-
 
     public void SetSpawnPoint(Transform newSpawnPoint)
     {

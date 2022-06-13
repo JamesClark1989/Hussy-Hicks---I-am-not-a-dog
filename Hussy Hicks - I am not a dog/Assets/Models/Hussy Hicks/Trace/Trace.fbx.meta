@@ -39,6 +39,27 @@ ModelImporter:
   - first:
       74: -3767682975942640364
     second: Armature|Run.001
+  - first:
+      74: 4854380409165082432
+    second: Golf Putt Idle
+  - first:
+      74: -8788670449051934630
+    second: Golf Putt Putting
+  - first:
+      74: -3412073651334780487
+    second: Celebrate Putt Win
+  - first:
+      74: -4052984842002970190
+    second: Diving
+  - first:
+      74: -3548635922026297110
+    second: Dive 1
+  - first:
+      74: -583440515077472928
+    second: Dive 2
+  - first:
+      74: -3125451189326421608
+    second: Dive Fail 1
   externalObjects: {}
   materials:
     materialImportMode: 2

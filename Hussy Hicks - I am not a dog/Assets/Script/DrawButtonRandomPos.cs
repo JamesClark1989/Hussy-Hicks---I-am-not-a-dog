@@ -10,4 +10,6 @@ public class DrawButtonRandomPos : MonoBehaviour
         buttonTransform.anchoredPosition = new Vector3(xPos[Random.Range(0, xPos.Length)], 40, 0);
     }
 
+
+
 }

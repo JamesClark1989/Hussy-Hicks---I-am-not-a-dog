@@ -18,6 +18,7 @@ TagManager:
   - L
   - Golf Ball
   - Ingredient
+  - Saved Text
   layers:
   - Default
   - TransparentFX

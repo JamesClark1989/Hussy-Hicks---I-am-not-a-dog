@@ -56,16 +56,7 @@ public class CthuluGame : MonoBehaviour
         cthuluAnimator.SetBool("Alive", true);
         gateAnimator.SetBool("Finished", true);
         glowAnimator.SetBool("Finished", true);
-        StartCoroutine("FinishGame");
+        GameManager.instance.SavedCurrentHussyHick(true);
     }
-
-    private IEnumerator FinishGame()
-    {
-        yield return new WaitForSeconds(4);
-        GameManager.instance.LoadNextLevel();
-    }
-
- 
-
 
 }

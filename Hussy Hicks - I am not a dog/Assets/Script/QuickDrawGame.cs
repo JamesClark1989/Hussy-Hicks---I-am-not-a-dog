@@ -6,16 +6,20 @@ using TMPro;
 public class QuickDrawGame : MonoBehaviour
 {
     [SerializeField] Transform spawnPoint;
-    [SerializeField] CharacterRunCallback characterRunCallback;
+    [SerializeField] CharacterDrawCallback characterDrawCallback;
+    [SerializeField] CowboyScript cowboyScript;
 
     [SerializeField] Animator cowboyAnim;
+    [SerializeField] Animator fadeAnim;
+    [SerializeField] Animator characterAnim;
+    [SerializeField] Animator wonGameAnimator;
 
     [SerializeField] Transform cameraPos;
 
     [SerializeField] bool draw = false;
     [SerializeField] float drawTimer;
     [SerializeField] float drawTimerMax;
-    bool haveNotShot = true;
+    bool haveNotShot = false;
 
     [SerializeField] float countDownTimer;
     [SerializeField] float countDownTimerMax;
@@ -24,26 +28,72 @@ public class QuickDrawGame : MonoBehaviour
 
     [SerializeField] TMP_Text counterText;
 
+    [SerializeField] int roundCounter = 1;
+    [SerializeField] TMP_Text roundText;
+    [SerializeField] Animator roundTextAnim;
+
+    [SerializeField] bool drawButtonShowing = false;
+
     void Start()
     {
         SetupGame();
     }
 
+    public void SetRoundText()
+    {
+        roundText.SetText("Round " + roundCounter.ToString());
+    }
+
     public void SetupGame()
     {
         SpawnCharacter();
-        cowboyAnim.Play("Quick Draw Idle");
-        drawTimerMax = Random.Range(0.3f, 0.45f);
+
+        // Set Camera
+        var theVirtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
+        theVirtualCamera.transform.position = cameraPos.position;
+        theVirtualCamera.transform.rotation = cameraPos.rotation;
+    }
+
+    public void ResetGame()
+    {
+        if(roundCounter < 4)
+        {
+            SetRoundText();
+            roundTextAnim.SetTrigger("ShowText");
+            cowboyAnim.SetBool("Dead", false);
+            cowboyAnim.Play("Quick Draw Idle");
+
+            characterAnim.SetTrigger("Quick Draw");
+            characterAnim.SetBool("Lost Draw", false);
+            StartCoroutine("ShowRoundText");
+        }
+        else
+        {
+            // Win Condition!!!
+            print("WIN!");
+        }
+
+    }
+
+    private IEnumerator ShowRoundText()
+    {
+        yield return new WaitForSeconds(2.5f);
+
+        drawButtonShowing = false;
+
+        //cowboyScript.CanShoot();
+
+        draw = false;
+        drawButton.SetActive(false);
+
+
+        drawTimerMax = Random.Range(0.35f, 0.45f);
         drawTimer = drawTimerMax;
 
         countDownTimer = countDownTimerMax;
         haveNotShot = true;
 
 
-        // Set Camera
-        var theVirtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
-        theVirtualCamera.transform.position = cameraPos.position;
-        theVirtualCamera.transform.rotation = cameraPos.rotation;
     }
 
 
@@ -53,11 +103,19 @@ public class QuickDrawGame : MonoBehaviour
         {
             if (draw)
             {
-                drawButton.SetActive(true);
+                // Some dodgy code. Should've been done in animator
+                if(drawButtonShowing == false)
+                {
+                    drawButton.SetActive(true);
+                    drawButtonShowing = true;
+                }
                 drawTimer -= Time.deltaTime;
                 if (drawTimer <= 0)
                 {
                     cowboyAnim.SetTrigger("Draw");
+                    haveNotShot = false;
+                    draw = false;
+                    fadeAnim.SetTrigger("Reset");
                 }
             }
             else
@@ -74,29 +132,43 @@ public class QuickDrawGame : MonoBehaviour
 
     }
 
-    public void SpawnCharacter()
+    void FinishGame()
     {
-        GameManager.instance.SetSpawnPoint(spawnPoint);
-        GameObject theCharacter = Instantiate(GameManager.instance.GetCurrentCharacter(), spawnPoint.localPosition, spawnPoint.rotation);
-        characterRunCallback.SetCharacterRunScript(theCharacter.GetComponent<CharacterRunScript>());
-
-        characterRunCallback.Run();
-
+        draw = false;
+        drawButton.SetActive(false);
+        GameManager.instance.SavedCurrentHussyHick(true);
+        wonGameAnimator.SetBool("Won", true);
     }
 
-    private IEnumerator FinishSection()
+    public void SpawnCharacter()
     {
-        yield return new WaitForSeconds(1);
-        characterRunCallback.Run();
+        //GameManager.instance.SetSpawnPoint(spawnPoint);
+        GameObject theCharacter = Instantiate(GameManager.instance.GetCurrentCharacter(), spawnPoint.position, spawnPoint.rotation);
+
+        // Fuck the shit components off
+        Destroy(theCharacter.GetComponent<CharacterRunScript>());
+        Destroy(theCharacter.GetComponent<CharacterController>());
+
+        characterAnim = theCharacter.GetComponent<Animator>();
+
+        // Set the draw script on the callback script
+        characterDrawCallback.SetCharacterDrawScript(theCharacter.GetComponent<CharacterDrawGameScript>());
+        characterDrawCallback.SetQuickDrawGameScript(this);
+        characterDrawCallback.Run();
+
+        theCharacter.transform.SetParent(spawnPoint);
+
+
     }
 
     public void CharacterShootFirst()
     {
+        drawButton.SetActive(false);
         cowboyAnim.SetBool("Dead", true);
         cowboyAnim.ResetTrigger("Draw");
-        cowboyAnim.GetComponent<CowboyScript>().CantShoot();
+        //cowboyAnim.GetComponent<CowboyScript>().CantShoot();
+        roundCounter++;
         haveNotShot = false;
-        StartCoroutine("FinishSection");
     }
 
 }
