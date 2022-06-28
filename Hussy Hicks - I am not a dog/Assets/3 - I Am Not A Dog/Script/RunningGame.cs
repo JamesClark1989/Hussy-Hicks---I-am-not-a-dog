@@ -2,11 +2,12 @@ using UnityEngine;
 using Cinemachine;
 using System.Collections;
 
-public class RunningGame : MonoBehaviour
+public class RunningGame : MonoBehaviour, IEndOfMiniGame
 {
     [SerializeField] Transform spawnPoint;
     [SerializeField] CharacterRunCallback characterRunCallback;
     [SerializeField] GameObject theCharacter;
+    [SerializeField] GameObject ui;
 
     void Start()
     {
@@ -16,14 +17,14 @@ public class RunningGame : MonoBehaviour
 
     void SetUpGame()
     {
-        GameManager.instance.SetSpawnPoint(spawnPoint);
+        GameManagerDog.instance.SetSpawnPoint(spawnPoint);
         
     }
 
     public void SpawnCharacter()
     {
         
-        theCharacter = Instantiate(GameManager.instance.GetCurrentCharacter(), spawnPoint.localPosition, spawnPoint.rotation);
+        theCharacter = Instantiate(GameManagerDog.instance.GetCurrentCharacter(), spawnPoint.localPosition, spawnPoint.rotation);
         Destroy(theCharacter.GetComponent<CharacterJumpController>());
         CharacterRunScript characterRunScript = theCharacter.GetComponent<CharacterRunScript>();
         characterRunCallback.SetCharacterRunScript(characterRunScript);
@@ -51,6 +52,21 @@ public class RunningGame : MonoBehaviour
 
         theCharacter.SetActive(true);
 
+
+    }
+
+    public void EndGameFunction()
+    {
+        Destroy(ui);
+    }
+
+    public void WonMiniGame()
+    {
+
+    }
+
+    public void LostMiniGame()
+    {
 
     }
 

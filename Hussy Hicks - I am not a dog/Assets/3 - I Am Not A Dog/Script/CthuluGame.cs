@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using Cinemachine;
 
-public class CthuluGame : MonoBehaviour
+public class CthuluGame : MonoBehaviour, IEndOfMiniGame
 {
     [SerializeField] Animator TabletUIAnim;
     [SerializeField] Animator cthuluAnimator;
@@ -30,8 +30,8 @@ public class CthuluGame : MonoBehaviour
 
     public void SpawnCharacter()
     {
-        GameManager.instance.SetSpawnPoint(spawnPoint);
-        GameObject theCharacter = Instantiate(GameManager.instance.GetCurrentCharacter(), spawnPoint.localPosition, spawnPoint.rotation);
+        GameManagerDog.instance.SetSpawnPoint(spawnPoint);
+        GameObject theCharacter = Instantiate(GameManagerDog.instance.GetCurrentCharacter(), spawnPoint.localPosition, spawnPoint.rotation);
         theCharacter.GetComponent<CharacterRunScript>().enabled = false;
         theCharacter.transform.SetParent(spawnPoint);
         theCharacter.GetComponent<CharacterAnimationOnly>().RunAnimation();
@@ -56,7 +56,22 @@ public class CthuluGame : MonoBehaviour
         cthuluAnimator.SetBool("Alive", true);
         gateAnimator.SetBool("Finished", true);
         glowAnimator.SetBool("Finished", true);
-        GameManager.instance.SavedCurrentHussyHick(true);
+        GameManagerDog.instance.SavedCurrentHussyHick(true);
+    }
+
+    public void EndGameFunction()
+    {
+
+    }
+
+    public void WonMiniGame()
+    {
+
+    }
+
+    public void LostMiniGame()
+    {
+
     }
 
 }

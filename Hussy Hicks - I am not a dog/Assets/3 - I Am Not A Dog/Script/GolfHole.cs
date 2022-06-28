@@ -21,6 +21,7 @@ public class GolfHole : MonoBehaviour
     private IEnumerator DelayBeforeReset()
     {
         yield return new WaitForSeconds(2);
+        golfGame.SetHolePosition();
         golfGame.StartGame();
     }
 }

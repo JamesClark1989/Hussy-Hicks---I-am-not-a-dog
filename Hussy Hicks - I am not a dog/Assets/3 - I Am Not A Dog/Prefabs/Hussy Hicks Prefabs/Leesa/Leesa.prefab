@@ -831,7 +831,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterController: {fileID: 4559428951029834767}
   speed: 0
-  speedMax: -4
+  speedMax: -5
   running: 0
   anim: {fileID: 4284186530682242062}
   moveDirection: {x: 0, y: 0, z: 0}
@@ -906,7 +906,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 4284186530682242062}
-  canShoot: 1
+  newQuickDrawGame: {fileID: 0}
 --- !u!1 &7633797276190811110
 GameObject:
   m_ObjectHideFlags: 0

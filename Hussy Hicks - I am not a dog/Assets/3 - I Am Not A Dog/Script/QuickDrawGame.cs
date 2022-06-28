@@ -136,14 +136,14 @@ public class QuickDrawGame : MonoBehaviour
     {
         draw = false;
         drawButton.SetActive(false);
-        GameManager.instance.SavedCurrentHussyHick(true);
+        GameManagerDog.instance.SavedCurrentHussyHick(true);
         wonGameAnimator.SetBool("Won", true);
     }
 
     public void SpawnCharacter()
     {
         //GameManager.instance.SetSpawnPoint(spawnPoint);
-        GameObject theCharacter = Instantiate(GameManager.instance.GetCurrentCharacter(), spawnPoint.position, spawnPoint.rotation);
+        GameObject theCharacter = Instantiate(GameManagerDog.instance.GetCurrentCharacter(), spawnPoint.position, spawnPoint.rotation);
 
         // Fuck the shit components off
         Destroy(theCharacter.GetComponent<CharacterRunScript>());

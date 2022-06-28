@@ -5,7 +5,7 @@ public class SpawnCharacter : MonoBehaviour
     
     void Start()
     {
-        Instantiate(GameManager.instance.GetCurrentCharacter());
+        Instantiate(GameManagerDog.instance.GetCurrentCharacter());
     }
 
 

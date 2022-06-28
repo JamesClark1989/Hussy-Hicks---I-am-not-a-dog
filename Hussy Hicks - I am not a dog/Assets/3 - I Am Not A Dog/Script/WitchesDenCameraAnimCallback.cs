@@ -7,4 +7,9 @@ public class WitchesDenCameraAnimCallback : MonoBehaviour
     {
         witchGameScript.StartGameLoop();
     }
+
+    public void Idle()
+    {
+        witchGameScript.CharacterIdle();
+    }
 }

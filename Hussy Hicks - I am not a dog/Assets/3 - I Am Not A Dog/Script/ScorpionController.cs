@@ -19,41 +19,78 @@ public class ScorpionController : MonoBehaviour
     string randomAnim;
 
     [SerializeField] bool battling = false;
+    [SerializeField] bool gameRunning = true;
     string walking = "Walking";
     [SerializeField] string[] animationParams = { "Left Snip", "Right Snip", "Sting" };
     void Start()
     {
-        timer = timerMax;
+        timer = 0.5f;
         randomAnim = animationParams[0];
     }
 
     void Update()
     {
-        
-        if (battling && attackCounter < attackCounterMax)
+        if(gameRunning == true)
         {
-            timer -= Time.deltaTime;
-            if(timer <= 0)
+            if (battling && attackCounter < attackCounterMax)
             {
-                randomAnim = animationParams[Random.Range(0, animationParams.Length)];
-                scorpionController.SetTrigger(randomAnim);
-                attackCounter++;
-                timer = timerMax;
-            }
-        }
-        if(attackCounter == attackCounterMax)
-        {
-            timer -= Time.deltaTime;
-            if(timer <= 0)
-            {
+                timer -= Time.deltaTime;
 
-                gateController.SetBool("OpenGate", true);
-                scorpionMovementController.SetBool("ScorpionBackoff", true);
-                scorpionDodgeGame.FinishedLevel();
-                attackCounter++;
+                if (timer <= 0)
+                {
+                    randomAnim = animationParams[Random.Range(0, animationParams.Length)];
+                    scorpionController.SetTrigger(randomAnim);
+                    attackCounter++;
+                    battling = false;
+                }
+            }
+            if (attackCounter == attackCounterMax)
+            {
+                timer -= Time.deltaTime;
+                if (timer <= 0)                {
+
+                    StopBattlingGoodEnd();
+                }
             }
         }
+
         
+    }
+
+    public void ResetTimerAfterAttack()
+    {
+        timer = timerMax;
+        timerMax -= 0.1f;
+        battling = true;
+    }
+
+    public void PauseBattling()
+    {
+        battling = false;
+        attackCounter--;
+    }
+
+    public void ContinueBattling()
+    {
+        timer = timerMax;
+        battling = true;
+    }
+
+    public void StopBattlingGoodEnd()
+    {
+        gameRunning = false;
+        gateController.SetBool("OpenGate", true);
+        scorpionMovementController.SetBool("ScorpionBackoff", true);
+        scorpionDodgeGame.FinishedLevel();
+        attackCounter++;
+    }
+
+    public void StopBattlingBadEnd()
+    {
+        gameRunning = false;
+        battling = false;
+        gateController.SetBool("OpenGate", false);
+        attackCounter++;
     }
 
     public void StartBattling()

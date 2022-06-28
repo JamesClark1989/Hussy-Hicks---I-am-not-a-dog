@@ -6,7 +6,7 @@ public class CharacterRunScript : MonoBehaviour
 {
     [SerializeField] CharacterController characterController;
     [SerializeField] float speed;
-    [SerializeField] float speedMax;
+    float speedMax = -4.5f;
     [SerializeField] bool running;
     //[SerializeField] float gravity = 9.8f;
 

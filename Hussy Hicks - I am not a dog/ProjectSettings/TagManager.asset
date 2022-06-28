@@ -19,6 +19,7 @@ TagManager:
   - Golf Ball
   - Ingredient
   - Saved Text
+  - GameData
   layers:
   - Default
   - TransparentFX

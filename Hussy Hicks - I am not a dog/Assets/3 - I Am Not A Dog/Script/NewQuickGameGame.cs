@@ -1,8 +1,8 @@
-using System.Collections;
+
 using Cinemachine;
 using UnityEngine;
 using TMPro;
-public class NewQuickGameGame : MonoBehaviour
+public class NewQuickGameGame : MonoBehaviour, IEndOfMiniGame
 {
     // Animators
     [SerializeField] Animator cowboyAnim;
@@ -10,15 +10,20 @@ public class NewQuickGameGame : MonoBehaviour
     [SerializeField] Animator characterEnterExitAnim;
     [SerializeField] Animator RoundAnim;
 
-    [SerializeField] GameObject drawButton;
+    [SerializeField] GameObject ui;
+    [SerializeField] GameObject drawui;
 
     [SerializeField] Transform cameraPos;
     [SerializeField] Transform spawnPoint;
+
+    [SerializeField] bool wonGame = false;
 
     [SerializeField] CharacterDrawGameScript characterDrawGameScript;
     [SerializeField] CowboyScript cowboyScript;
 
     [SerializeField] TMP_Text roundText;
+
+    [SerializeField] bool playerCanShoot = true;
 
     int RoundCounter = 1;
 
@@ -40,7 +45,7 @@ public class NewQuickGameGame : MonoBehaviour
 
     void SpawnCharacter()
     {
-        GameObject theCharacter = Instantiate(GameManager.instance.GetCurrentCharacter(), spawnPoint.position, spawnPoint.rotation);
+        GameObject theCharacter = Instantiate(GameManagerDog.instance.GetCurrentCharacter(), spawnPoint.position, spawnPoint.rotation);
 
         // Fuck the shit components off
         Destroy(theCharacter.GetComponent<CharacterRunScript>());
@@ -59,6 +64,8 @@ public class NewQuickGameGame : MonoBehaviour
     {
         cowboyAnim.SetTrigger("Idle");
         characterDrawGameScript.DrawIdleAnimation();
+        playerCanShoot = true;
+        cowboyScript.SetToCanShoot();
     }
 
     void SetRoundText()
@@ -68,7 +75,9 @@ public class NewQuickGameGame : MonoBehaviour
 
     public void StartRoundCountdown()
     {
-        RoundAnim.SetBool("Countdown", true);
+        if(wonGame == false)
+            RoundAnim.SetBool("Countdown", true);
+        
     }
 
     // As soon as you can draw, this calls the cowboy script to countdown before he draws
@@ -80,25 +89,31 @@ public class NewQuickGameGame : MonoBehaviour
     // This is called from the Draw animation in the Player Animator
     public void PlayerShoot()
     {
-        cowboyScript.StopDraw();
-        cowboyAnim.SetTrigger("Dead");
-        RoundCounter++;
-        if(RoundCounter < 4)
+        if (playerCanShoot)
         {
+            cowboyScript.StopDraw();
+            cowboyAnim.SetTrigger("Dead");
+            RoundCounter++;
             SetRoundText();
-            RoundAnim.SetTrigger("Restart");
+        }
+
+
+        if (RoundCounter == 4)
+        {
+            Won();
         }
         else
         {
-            Won();
+            RoundAnim.SetTrigger("Restart");
         }
     }
 
     // Kill Player
     public void CowboyShoot()
     {
-       
+        playerCanShoot = false;
         characterAnim.SetBool("Lost Draw", true);
+        drawui.SetActive(false);
         RoundAnim.SetTrigger("Restart");
     }
 
@@ -118,6 +133,24 @@ public class NewQuickGameGame : MonoBehaviour
     // Win Game
     void Won()
     {
-        GameManager.instance.SavedCurrentHussyHick(true);
+        GameManagerDog.instance.SavedCurrentHussyHick(true);
+        wonGame = true;
+        characterDrawGameScript.Celebrate();
+
+    }
+
+    public void EndGameFunction()
+    {
+        Destroy(ui);
+    }
+
+    public void WonMiniGame()
+    {
+
+        cowboyAnim.SetTrigger("Dead");
+    }
+
+    public void LostMiniGame()
+    {
     }
 }

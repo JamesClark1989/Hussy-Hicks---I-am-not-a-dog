@@ -23,15 +23,20 @@ public class CowboyScript : MonoBehaviour
 
     private IEnumerator DrawDelay()
     {
-        float randomDelay = Random.Range(0.5f, 0.6f);
+        float randomDelay = Random.Range(0.5f, 0.7f);
         yield return new WaitForSeconds(randomDelay);
         cowboyAnim.SetTrigger("Draw");
     }
 
     public void ShootCharacter()
     {
-        if(canShoot)
+        if(canShoot == true)
             newQuickGameGame.CowboyShoot();
+    }
+
+    public void SetToCanShoot()
+    {
+        canShoot = true;
     }
 
 

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class LoadMiniGameCallback : MonoBehaviour
@@ -11,6 +12,8 @@ public class LoadMiniGameCallback : MonoBehaviour
 
     [SerializeField] bool currentlyPlaying = false;
 
+    [SerializeField] Slider timerRadial;
+
     private void Start()
     {
         barWidth = timerBar.sizeDelta;
@@ -21,9 +24,13 @@ public class LoadMiniGameCallback : MonoBehaviour
     {
         if (currentlyPlaying)
         {
-            float width = Mathf.MoveTowards(timerBar.sizeDelta.x, 0, timer * Time.deltaTime);
-            timerBar.sizeDelta = new Vector2(width, timerBar.sizeDelta.y);
-            if (width == 0)
+            //float width = Mathf.MoveTowards(timerBar.sizeDelta.x, 0, timer * Time.deltaTime);
+            //timerBar.sizeDelta = new Vector2(width, timerBar.sizeDelta.y);
+
+            timerRadial.value = timer;
+
+            timer -= Time.deltaTime;
+            if (timer <= 0)
             {
                 // This won't show fail text if the player has passed the game
                 StartCoroutine("ShowFailText");
@@ -34,17 +41,17 @@ public class LoadMiniGameCallback : MonoBehaviour
 
     public void DestroyCurrentMiniGame()
     {
-        GameManager.instance.DestroyMiniGame();
+        GameManagerDog.instance.DestroyMiniGame();
     }
 
     public void LoadHallway()
     {
-        GameManager.instance.LoadHallway();
+        GameManagerDog.instance.LoadHallway();
     }
 
     public void LoadMiniGame()
     {
-        GameManager.instance.SpawnMiniGameRoom();
+        GameManagerDog.instance.SpawnMiniGameRoom();
         timerBar.sizeDelta = barWidth;
         timer = timerMax;
         currentlyPlaying = true;
@@ -52,10 +59,16 @@ public class LoadMiniGameCallback : MonoBehaviour
 
     private IEnumerator ShowFailText()
     {
-        GameManager.instance.SavedCurrentHussyHick(false);
+        GameManagerDog.instance.SavedCurrentHussyHick(false);
+        // Call end game function on mini game
+        GameManagerDog.instance.TriggerMiniGameEndScene();
         yield return new WaitForSeconds(2);
-        GameManager.instance.LoadNextLevel();
-        GameManager.instance.ChangeNextCharacter();
+        GameManagerDog.instance.ShowSavedOrNotSavedText();
+        GameManagerDog.instance.CurrentMiniGameFinished();
+        // Might need to fade out
+        yield return new WaitForSeconds(2.5f);
+        GameManagerDog.instance.LoadNextLevel();
+        GameManagerDog.instance.ChangeNextCharacter();
     }
 
 

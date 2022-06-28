@@ -22,14 +22,23 @@ public class CharacterAnimationOnly : MonoBehaviour
 
     public void CelebratePuttWin()
     {
+        characterAnim.SetBool("Diving", false);
+        characterAnim.ResetTrigger("Idle");
         characterAnim.SetBool("Golf Idle", false);
         characterAnim.SetBool("Celebrate", true);
+    }
+
+    public void Scared()
+    {
+        characterAnim.SetBool("Diving", false);
+        characterAnim.ResetTrigger("Idle");
+        characterAnim.SetBool("Golf Idle", false);
+        characterAnim.SetBool("Scared", true);
     }
 
     public void DiveCorrect()
     {
         float diveAnimation = Random.Range(0f, 1f);
-        print(diveAnimation);
         if(diveAnimation <= 0.5f)
         {
             characterAnim.SetTrigger("Dive 1");

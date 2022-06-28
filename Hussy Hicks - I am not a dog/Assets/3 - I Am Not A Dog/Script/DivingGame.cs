@@ -1,13 +1,11 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using Cinemachine;
 
-public class DivingGame : MonoBehaviour
+public class DivingGame : MonoBehaviour, IEndOfMiniGame
 {
-    [SerializeField] RectTransform easy;
-    [SerializeField] RectTransform medium;
-    [SerializeField] RectTransform hard;
     [SerializeField] GameObject ui;
 
     [SerializeField] Transform cameraPos;
@@ -24,28 +22,28 @@ public class DivingGame : MonoBehaviour
     [SerializeField] Animator[] judgeAnimators;
     [SerializeField] Animator blackFadeAnim;
 
-    [SerializeField] RectTransform pointer;
-    [SerializeField] Vector3 pointerRot;
-    [SerializeField] float pointerSpeed;
-    float pointerSpeedPositive = 180;
-    float pointerSpeedNegative = -180;
-    [SerializeField] float maxPointerRotation;
-
     [SerializeField] int gameCounter = 0;
 
     [SerializeField] bool startGame = false;
 
-    [SerializeField] float currentCorrectRotation;
-    [SerializeField] float correctRotationExtra;
 
     [SerializeField] int score;
     [SerializeField] TMP_Text scoreText;
+    [SerializeField] bool gameEnded = false;
+
+    [SerializeField] GameObject divingCanvas;
+
+    // Sliding Time
+    [SerializeField] Slider answerSlider;
+    [SerializeField] Slider setSlider;
+    [SerializeField] float sliderSpeed;
+
+    float speed = 1;
 
     void Start()
     {
         SetupGame();
         SpawnCharacter();
-        easy.eulerAngles = new Vector3(0,0,Random.Range(-75, 75));
         SetupRotationRange();
     }
 
@@ -54,17 +52,19 @@ public class DivingGame : MonoBehaviour
     {
         if (startGame)
         {
-            if (pointerRot.z >= maxPointerRotation) pointerSpeed = pointerSpeedNegative;
-            else if (pointerRot.z <= -maxPointerRotation) pointerSpeed = pointerSpeedPositive;
-            pointerRot.z += pointerSpeed * Time.deltaTime;
-            pointer.eulerAngles = pointerRot;
+            if (answerSlider.value >= 1)
+                sliderSpeed = -speed;
+            else if (answerSlider.value <= 0)
+                sliderSpeed = speed;
+
+            answerSlider.value += Time.deltaTime * sliderSpeed;
         }
     }
 
     void SpawnCharacter()
     {
-        GameManager.instance.SetSpawnPoint(spawnPoint);
-        GameObject theCharacter = Instantiate(GameManager.instance.GetCurrentCharacter(), spawnPoint.localPosition, spawnPoint.rotation);
+        GameManagerDog.instance.SetSpawnPoint(spawnPoint);
+        GameObject theCharacter = Instantiate(GameManagerDog.instance.GetCurrentCharacter(), spawnPoint.localPosition, spawnPoint.rotation);
         theCharacter.transform.SetParent(spawnPoint);
         theCharacter.GetComponent<CharacterRunScript>().enabled = false;
         theCharacter.GetComponent<CharacterController>().enabled = false;
@@ -80,33 +80,22 @@ public class DivingGame : MonoBehaviour
         var theVirtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
         theVirtualCamera.transform.position = cameraPos.position;
         theVirtualCamera.transform.rotation = cameraPos.rotation;
+        theVirtualCamera.transform.SetParent(cameraPos);
     }
 
     void SetupRotationRange()
     {
+        setSlider.value = Random.Range(0f, 1f);
 
-        if(gameCounter == 0)
-        {
-            currentCorrectRotation = easy.eulerAngles.z;
-            correctRotationExtra = 26;
-        }
-        else if (gameCounter == 1)
-        {
-            currentCorrectRotation = medium.eulerAngles.z;
-            correctRotationExtra = 14;
-        }
-        else if (gameCounter == 2)
-        {
-            currentCorrectRotation = hard.eulerAngles.z;
-            correctRotationExtra = 5;
-        }
+        ui.SetActive(false);
     }
 
-    public void CheckAnswer(RectTransform rotationAnswer)
+    public void CheckAnswer()
     {
-        float selectedRotation = rotationAnswer.eulerAngles.z;
 
-        if(selectedRotation <= currentCorrectRotation + correctRotationExtra && selectedRotation >= currentCorrectRotation - correctRotationExtra)
+        float answer = answerSlider.value;
+
+        if (answer <= setSlider.value + 0.08f && answer >= setSlider.value - 0.08f)
         {
             StartCoroutine("DivedCorrect");
         }
@@ -125,50 +114,25 @@ public class DivingGame : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
-        if(gameCounter > 0)
-            gameCounter -= 1;
-
-        // Deactivate all difficulty ui
-        easy.gameObject.SetActive(false);
-        medium.gameObject.SetActive(false);
-        hard.gameObject.SetActive(false);
-
-        if (gameCounter == 0)
+        if (gameEnded == false)
         {
-            easy.gameObject.SetActive(true);
-            easy.eulerAngles = new Vector3(0, 0, Random.Range(-75, 75));
+            yield return new WaitForSeconds(1.5f);
+
+            // Judges score low
+
+            for (int i = 0; i < judgeAnimators.Length; i++)
+            {
+                judgeAnimators[i].SetTrigger("Score");
+                scoreCards[i].SetActive(true);
+                divingScoreCardNumbers[i].TurnOnNumbers(false);
+            }
+
+            yield return new WaitForSeconds(1.4f);
+            blackFadeAnim.SetTrigger("Reset");
+
             SetupRotationRange();
+
         }
-        else if (gameCounter == 1)
-        {
-            medium.gameObject.SetActive(true);
-            medium.eulerAngles = new Vector3(0, 0, Random.Range(-75, 75));
-            SetupRotationRange();
-        }
-        else if (gameCounter == 2)
-        {
-            hard.gameObject.SetActive(true);
-            hard.eulerAngles = new Vector3(0, 0, Random.Range(-85, 85));
-            SetupRotationRange();
-        }
-
-        ui.SetActive(false);
-
-
-
-        yield return new WaitForSeconds(1.5f);
-
-        // Judges score low
-
-        for (int i = 0; i < judgeAnimators.Length; i++)
-        {
-            judgeAnimators[i].SetTrigger("Score");
-            scoreCards[i].SetActive(true);
-            divingScoreCardNumbers[i].TurnOnNumbers(false);
-        }
-
-        yield return new WaitForSeconds(1.4f);
-        blackFadeAnim.SetTrigger("Reset");
 
 
     }
@@ -176,59 +140,48 @@ public class DivingGame : MonoBehaviour
 
     private IEnumerator DivedCorrect()
     {
+
+        // add to score
+        speed += 1;
+        gameCounter += 1;
+        score += 10;
+        scoreText.SetText("Score: " + score.ToString());
+        CheckGameCounter();
+
         characterAnimationOnly.DiveCorrect();
         characterParentAnimator.SetTrigger("Dive");
         yield return new WaitForSeconds(0.5f);
 
-        // Deactivate all difficulty ui
-        easy.gameObject.SetActive(false);
-        medium.gameObject.SetActive(false);
-        hard.gameObject.SetActive(false);
 
-
-        if(gameCounter < 2)
-            gameCounter += 1;
-
-        if(gameCounter == 0)
+        if(gameEnded == false)
         {
-            easy.gameObject.SetActive(true);
-            easy.eulerAngles = new Vector3(0, 0, Random.Range(-75, 75));
+
+            ui.SetActive(false);
+
+            yield return new WaitForSeconds(1.5f);
+
+            for (int i = 0; i < judgeAnimators.Length; i++)
+            {
+                judgeAnimators[i].SetTrigger("Score");
+                scoreCards[i].SetActive(true);
+                divingScoreCardNumbers[i].TurnOnNumbers(true);
+            }
+            yield return new WaitForSeconds(1.4f);
+            blackFadeAnim.SetTrigger("Reset");
+
             SetupRotationRange();
-        }
-        else if (gameCounter == 1)
-        {
-            medium.gameObject.SetActive(true);
-            medium.eulerAngles = new Vector3(0, 0, Random.Range(-75, 75));
-            SetupRotationRange();
-        }
-        else if (gameCounter == 2)
-        {
-            hard.gameObject.SetActive(true);
-            hard.eulerAngles = new Vector3(0, 0, Random.Range(-85, 85));
-            SetupRotationRange();
-        }
-        ui.SetActive(false);
 
-        yield return new WaitForSeconds(1.5f);
 
-        for (int i = 0; i < judgeAnimators.Length; i++)
-        {
-            judgeAnimators[i].SetTrigger("Score");
-            scoreCards[i].SetActive(true);
-            divingScoreCardNumbers[i].TurnOnNumbers(true);
         }
-        yield return new WaitForSeconds(1.4f);
-        blackFadeAnim.SetTrigger("Reset");
-
-        // add to score
-        score += 10;
-        scoreText.SetText("Score: " + score.ToString());
 
     }
 
-    public int CheckGameCounter()
+    void CheckGameCounter()
     {
-        return gameCounter;
+        if(gameCounter >= 2)
+        {
+            GameManagerDog.instance.SavedCurrentHussyHick(true);
+        }
     }
 
     public void StartDiving()
@@ -264,5 +217,29 @@ public class DivingGame : MonoBehaviour
 
         ui.SetActive(true);
         startGame = true;
+    }
+
+    public void EndGameFunction() 
+    {
+        Destroy(divingCanvas);
+        gameEnded = true;
+        if (score >= 20)
+        {
+            WonMiniGame();
+        }
+        else
+        {
+            LostMiniGame();
+        }
+    }
+
+    public void WonMiniGame()
+    {
+        characterAnimationOnly.CelebratePuttWin();
+    }
+
+    public void LostMiniGame()
+    {
+        characterAnimationOnly.Scared();
     }
 }

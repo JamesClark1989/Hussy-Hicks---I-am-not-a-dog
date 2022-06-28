@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class CharacterJumpController : MonoBehaviour
 {
@@ -6,6 +7,9 @@ public class CharacterJumpController : MonoBehaviour
     [SerializeField] Animator anim;
     [SerializeField] float moveSpeed;
     [SerializeField] Vector3 targetPoint;
+    [SerializeField] bool canMove = false;
+    [SerializeField] bool stunned = false;
+
     void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -16,8 +20,15 @@ public class CharacterJumpController : MonoBehaviour
 
     void Update()
     {
+        float dist = Vector3.Distance(targetPoint, transform.position);
+        if (dist < 0.2f)
+            canMove = true;
+        else
+        {
+            canMove = false;
+            MoveTowardsTarget(targetPoint);
+        }
 
-        MoveTowardsTarget(targetPoint);
     }
 
     void MoveTowardsTarget(Vector3 target)
@@ -46,17 +57,40 @@ public class CharacterJumpController : MonoBehaviour
 
     public void ChangeTargetPoint(Vector3 newTargetPoint)
     {
-        anim.SetTrigger("Jump");
+
+        if (canMove == true && stunned == false)
+        {
+            anim.SetTrigger("Jump");
+            targetPoint = newTargetPoint;
+        }
+    }
+
+
+    public void Fall()
+    {
+        anim.SetTrigger("Fall");
+        StartCoroutine(GetUp());
+    }
+
+    private IEnumerator GetUp()
+    {
+
+        stunned = true;
+        yield return new WaitForSeconds(0.8f);
+        stunned = false;
+    }
+
+    public void ForceChangeTargetPoint(Vector3 newTargetPoint)
+    {
         targetPoint = newTargetPoint;
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void ReturnToStart(Transform startPos)
     {
+        characterController.enabled = false;
+        transform.position = startPos.position;
+        ForceChangeTargetPoint(startPos.position);
+        characterController.enabled = true;
 
-        if (other.CompareTag("Death"))
-        {
-            //Destroy(gameObject);
-            //GameManager.instance.ReloadAnimation();
-        }
     }
 }

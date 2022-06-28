@@ -2,7 +2,7 @@ using System.Collections;
 using Cinemachine;
 using UnityEngine;
 
-public class ScorpionDodgeGame : MonoBehaviour
+public class ScorpionDodgeGame : MonoBehaviour, IEndOfMiniGame
 {
     [SerializeField] Transform spawnPoint;
     [SerializeField] CharacterJumpController characterJumpController;
@@ -10,11 +10,16 @@ public class ScorpionDodgeGame : MonoBehaviour
     [SerializeField] Animator platforms;
     [SerializeField] Transform cameraPos;
     [SerializeField] Transform finishRotation;
+    [SerializeField] ScorpionController scorpionController;
 
     [SerializeField] GameObject finishGameCollider;
 
     [SerializeField] Vector3 jumpPosition1;
     [SerializeField] Vector3 jumpPosition2;
+
+    [SerializeField] GameObject ui;
+
+    bool wonGame = false;
 
     void Start()
     {
@@ -25,8 +30,8 @@ public class ScorpionDodgeGame : MonoBehaviour
 
     public void SpawnCharacter()
     {
-        GameManager.instance.SetSpawnPoint(spawnPoint);
-        GameObject theCharacter = Instantiate(GameManager.instance.GetCurrentCharacter(), spawnPoint.localPosition, spawnPoint.rotation);
+        GameManagerDog.instance.SetSpawnPoint(spawnPoint);
+        GameObject theCharacter = Instantiate(GameManagerDog.instance.GetCurrentCharacter(), spawnPoint.localPosition, spawnPoint.rotation);
         characterRunScript = theCharacter.GetComponent<CharacterRunScript>();
         characterRunScript.enabled = false;
         characterJumpController = theCharacter.GetComponent<CharacterJumpController>();
@@ -45,12 +50,35 @@ public class ScorpionDodgeGame : MonoBehaviour
 
     public void FinishedLevel()
     {
+        ui.SetActive(false);
+        GameManagerDog.instance.SavedCurrentHussyHick(true);
+        wonGame = true;
         platforms.SetBool("Raise", true);
         finishGameCollider.SetActive(true);
         characterJumpController.transform.rotation = finishRotation.rotation;
         characterJumpController.enabled = false;
         characterRunScript.enabled = true;
         characterRunScript.Run();
+
+    }
+
+    public void EndGameFunction() 
+    {
+        ui.SetActive(false);
+        if (!wonGame)
+            LostMiniGame();
+    }
+
+
+    public void WonMiniGame()
+    {
+
+    }
+
+    public void LostMiniGame()
+    {
+        scorpionController.StopBattlingBadEnd();
+
     }
 
 

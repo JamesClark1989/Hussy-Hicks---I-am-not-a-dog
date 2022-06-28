@@ -1,5 +1,117 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4511569509993976295
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 559953921589007185}
+  - component: {fileID: 2747904191656823495}
+  - component: {fileID: 699079299441301079}
+  - component: {fileID: 2090758733256947565}
+  - component: {fileID: 3991323841679412794}
+  m_Layer: 5
+  m_Name: Fade
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &559953921589007185
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4511569509993976295}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 7815381320646223023}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &2747904191656823495
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4511569509993976295}
+  m_CullTransparentMesh: 1
+--- !u!114 &699079299441301079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4511569509993976295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!95 &2090758733256947565
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4511569509993976295}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7bd7bac88520e8f4b90b1e13e7ff0b31, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3991323841679412794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4511569509993976295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 153e6dcb69b323b48ba6864cf688c3b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charadesGame: {fileID: 7815381319696083376}
+  bootAnim: {fileID: 7815381321280955924}
 --- !u!1 &6116379501344007219
 GameObject:
   m_ObjectHideFlags: 0
@@ -97,7 +209,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: KETTLE
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e74742e0ce521e14f963e6e6cf07d49e, type: 2}
   m_sharedMaterial: {fileID: 9208776057231056672, guid: e74742e0ce521e14f963e6e6cf07d49e, type: 2}
@@ -231,7 +343,11 @@ MonoBehaviour:
   bridgeAnim: {fileID: 7815381320636719323}
   bootAnim: {fileID: 7815381321280955924}
   monkeyAnim: {fileID: 7815381319713217906}
+  whirlwindAnim: {fileID: 7815381320291302512}
+  charadesAnswers: {fileID: 0}
+  ui: {fileID: 7815381320646223022}
   cameraPos: {fileID: 8943293437786565511}
+  gameCounter: 0
 --- !u!114 &7815381319696083377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -379,6 +495,7 @@ GameObject:
   - component: {fileID: 7815381320034570487}
   - component: {fileID: 7815381320034570486}
   - component: {fileID: 7815381320034570485}
+  - component: {fileID: 2814416884655000147}
   m_Layer: 5
   m_Name: Guess 1
   m_TagString: Untagged
@@ -402,9 +519,9 @@ RectTransform:
   m_Father: {fileID: 7815381321057318568}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 266.76138, y: -18}
   m_SizeDelta: {x: 170, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7815381320034570487
@@ -501,6 +618,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2814416884655000147}
+        m_TargetAssemblyTypeName: TurnOffCharadesButton, Assembly-CSharp
+        m_MethodName: TurnOffCharadesButtons
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2814416884655000147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7815381320034570483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a368769b935640741a7412c1a3aef03a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charadesParent: {fileID: 7815381321057318583}
 --- !u!1 &7815381320154553115
 GameObject:
   m_ObjectHideFlags: 0
@@ -567,7 +709,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: CAR
+  m_text: bla
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e74742e0ce521e14f963e6e6cf07d49e, type: 2}
   m_sharedMaterial: {fileID: 9208776057231056672, guid: e74742e0ce521e14f963e6e6cf07d49e, type: 2}
@@ -648,6 +790,7 @@ GameObject:
   - component: {fileID: 7815381320496819104}
   - component: {fileID: 7815381320496819119}
   - component: {fileID: 7815381320496819118}
+  - component: {fileID: 7488705406528355287}
   m_Layer: 5
   m_Name: Guess 2
   m_TagString: Untagged
@@ -671,9 +814,9 @@ RectTransform:
   m_Father: {fileID: 7815381321057318568}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 800.2842, y: -18}
   m_SizeDelta: {x: 170, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7815381320496819104
@@ -770,6 +913,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7488705406528355287}
+        m_TargetAssemblyTypeName: TurnOffCharadesButton, Assembly-CSharp
+        m_MethodName: TurnOffCharadesButtons
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7488705406528355287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7815381320496819116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a368769b935640741a7412c1a3aef03a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charadesParent: {fileID: 7815381321057318583}
 --- !u!1 &7815381320636719321
 GameObject:
   m_ObjectHideFlags: 0
@@ -861,6 +1029,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7815381321057318568}
+  - {fileID: 559953921589007185}
   m_Father: {fileID: 7815381319696083390}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -940,9 +1109,11 @@ GameObject:
   m_Component:
   - component: {fileID: 7815381320807356565}
   - component: {fileID: 7815381320807356566}
+  - component: {fileID: 6782755612336088183}
+  - component: {fileID: 3759692322182013023}
   m_Layer: 0
   m_Name: Death Trigger
-  m_TagString: Death
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -975,6 +1146,35 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.1259365, y: 3.1560316, z: 5.260388}
   m_Center: {x: 0.013041973, y: -4.5835643, z: 0.86980605}
+--- !u!114 &6782755612336088183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7815381320807356564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 355f4656d07334e4689dade1e36943e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeAnim: {fileID: 2090758733256947565}
+--- !u!54 &3759692322182013023
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7815381320807356564}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &7815381320869738371
 GameObject:
   m_ObjectHideFlags: 0
@@ -1030,13 +1230,14 @@ GameObject:
   m_Component:
   - component: {fileID: 7815381321057318568}
   - component: {fileID: 7815381321057318569}
+  - component: {fileID: 3374308100091524385}
   m_Layer: 5
   m_Name: Guess Button Holder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7815381321057318568
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1085,6 +1286,19 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &3374308100091524385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7815381321057318583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc6eb910a22de774d9fb5a605b319c0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charadesGame: {fileID: 7815381319696083376}
 --- !u!1001 &7815381319713217919
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1167,6 +1381,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6396945577396566577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6968377278429913134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f5d73db128422344907f94d4f061347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charadesAnswers: {fileID: 7815381321057318583}
+  anim: {fileID: 7815381320291302512}
 --- !u!4 &7782069086779325076 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 503368f774549e64f8a86901c420d0a8, type: 3}
@@ -1833,7 +2061,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6332659207210818113, guid: cb5f49a10fdd9584386bb5b84e6f054a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.61
+      value: -3.25
       objectReference: {fileID: 0}
     - target: {fileID: 6332659207210818113, guid: cb5f49a10fdd9584386bb5b84e6f054a, type: 3}
       propertyPath: m_LocalPosition.y

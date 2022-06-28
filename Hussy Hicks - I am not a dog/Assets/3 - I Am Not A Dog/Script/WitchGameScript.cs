@@ -1,7 +1,8 @@
 using System.Collections;
 using UnityEngine;
+using Cinemachine;
 
-public class WitchGameScript : MonoBehaviour
+public class WitchGameScript : MonoBehaviour, IEndOfMiniGame
 {
     [SerializeField] string[] ingredients = new string[] { "Batwing", "Eye", "Mushroom", "Toad", "Toe", "Gecko" };
     [SerializeField] string[] correctIngredients = new string[3];
@@ -16,18 +17,49 @@ public class WitchGameScript : MonoBehaviour
     [SerializeField] Animator speechBubbleAnim;
     [SerializeField] Animator cameraAnim;
     [SerializeField] Animator fadeReset;
+    [SerializeField] CharacterAnimationOnly characterAnimationOnly;
 
     [SerializeField] WitchIngredientSpeech witchIngredientSpeech;
 
+    [SerializeField] Transform spawnPoint;
+    [SerializeField] Transform cameraPos;
+
     void Start()
     {
+        SetupWitchGame();
+        SpawnCharacter();
         SelectRandomIngredients();
         RandomiseIngredientObjects();
     }
 
-  
+    void SetupWitchGame()
+    {
+        // Set Camera
+        var theVirtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
+        theVirtualCamera.transform.position = cameraPos.position;
+        theVirtualCamera.transform.rotation = cameraPos.rotation;
+        theVirtualCamera.transform.SetParent(cameraPos);
+    }
+
+    public void SpawnCharacter()
+    {
+        GameManagerDog.instance.SetSpawnPoint(spawnPoint);
+        GameObject theCharacter = Instantiate(GameManagerDog.instance.GetCurrentCharacter(), spawnPoint.localPosition, spawnPoint.rotation);
+        theCharacter.GetComponent<CharacterRunScript>().enabled = false;
+        theCharacter.transform.SetParent(spawnPoint);
+        characterAnimationOnly = theCharacter.GetComponent<CharacterAnimationOnly>();
+        characterAnimationOnly.RunAnimation();
+    }
+
+    public void CharacterIdle()
+    {
+        characterAnimationOnly.IdleAnimation();
+    }
+
+
     void SelectRandomIngredients()
     {
+        // Randomise ingredients
         for (int i = 0; i < ingredients.Length; i++)
         {
             string temp = ingredients[i];
@@ -36,7 +68,8 @@ public class WitchGameScript : MonoBehaviour
             ingredients[randomIndex] = temp;
         }
 
-        for (int i = 0; i < 3; i++)
+        // First 5 ingredients
+        for (int i = 0; i < 5; i++)
         {
             correctIngredients[i] = ingredients[i];
         }
@@ -54,6 +87,7 @@ public class WitchGameScript : MonoBehaviour
             ingredientPositions[randomIndex] = temp;
         }
 
+        // Setup ingredients or something
 
         for (int i = 0; i < ingredientObjects.Length; i++)
         {
@@ -80,17 +114,40 @@ public class WitchGameScript : MonoBehaviour
         }
     }
 
+    public void CanNotDragObjects()
+    {
+        for (int i = 0; i < ingredientObjects.Length; i++)
+        {
+            ingredientObjects[i].GetComponent<BoxCollider>().enabled = false;
+        }
+    }
+
     public void CheckCurrentIngredient(string ingredientDropped)
     {
         if(ingredientDropped == correctIngredients[currentIngredient])
         {
-            if (currentIngredient < 3) currentIngredient++;
-            else currentIngredient = 0;
+            if (currentIngredient < correctIngredients.Length) currentIngredient++;
+
+            if(currentIngredient >= correctIngredients.Length) 
+            {
+                //currentIngredient = 0;
+                WonGame();
+            }
         }
         else
         {
             WrongIngredient();
         }
+    }
+
+
+    public void WonGame()
+    {
+        GameManagerDog.instance.SavedCurrentHussyHick(true);
+        cameraAnim.SetTrigger("Show All");
+        characterAnimationOnly.CelebratePuttWin();
+        CanNotDragObjects();
+
     }
 
 
@@ -120,9 +177,26 @@ public class WitchGameScript : MonoBehaviour
     {
         witchAnim.SetBool("Talking", true);
         speechBubbleAnim.SetTrigger("Show");
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(7);
         cameraAnim.SetTrigger("Show Cauldron and Shelf");
         yield return new WaitForSeconds(1);
         CanDragObjects();
     }
+
+    public void EndGameFunction()
+    {
+
+    }
+
+    public void WonMiniGame()
+    {
+
+    }
+
+    public void LostMiniGame()
+    {
+
+    }
+
+
 }

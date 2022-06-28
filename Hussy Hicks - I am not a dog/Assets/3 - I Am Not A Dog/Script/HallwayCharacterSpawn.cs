@@ -8,7 +8,7 @@ public class HallwayCharacterSpawn : MonoBehaviour
     {
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         mainCamera.SetActive(false);
-        GameObject character = Instantiate(GameManager.instance.GetCurrentCharacter(), transform.position, transform.rotation);
+        GameObject character = Instantiate(GameManagerDog.instance.GetCurrentCharacter(), transform.position, transform.rotation);
         character.GetComponent<CharacterRunScript>().enabled = false;
         character.GetComponent<CharacterAnimationOnly>().enabled = true;
         character.GetComponent<CharacterAnimationOnly>().RunAnimation();

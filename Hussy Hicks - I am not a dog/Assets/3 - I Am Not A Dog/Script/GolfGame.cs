@@ -3,7 +3,7 @@ using TMPro;
 using System.Collections;
 using Cinemachine;
 
-public class GolfGame : MonoBehaviour
+public class GolfGame : MonoBehaviour, IEndOfMiniGame
 {
     [SerializeField] Transform[] holePositions;
     [SerializeField] Transform golfHole;
@@ -27,7 +27,10 @@ public class GolfGame : MonoBehaviour
     [SerializeField] CharacterAnimationOnly characterAnimationOnly;
 
     [SerializeField] int score = 0;
+    [SerializeField] int currentHole;
     [SerializeField] TMP_Text scoreText;
+
+    [SerializeField] bool wonGame = false;
 
     void Start()
     {
@@ -37,8 +40,7 @@ public class GolfGame : MonoBehaviour
 
     void SetupGolfGame()
     {
-        Transform startHolePos = holePositions[Random.Range(0, holePositions.Length)];
-        golfHole.position = startHolePos.position;
+        SetHolePosition();
 
         // Set Camera
         var theVirtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
@@ -48,10 +50,20 @@ public class GolfGame : MonoBehaviour
 
     }
 
+    public void SetHolePosition()
+    {
+        if(wonGame == false)
+        {
+
+            Transform startHolePos = holePositions[Random.Range(0, holePositions.Length)];
+            golfHole.position = startHolePos.position;
+        }
+    }
+
     public void SpawnCharacter()
     {
-        GameManager.instance.SetSpawnPoint(spawnPoint);
-        GameObject theCharacter = Instantiate(GameManager.instance.GetCurrentCharacter(), spawnPoint.localPosition, spawnPoint.rotation);
+        GameManagerDog.instance.SetSpawnPoint(spawnPoint);
+        GameObject theCharacter = Instantiate(GameManagerDog.instance.GetCurrentCharacter(), spawnPoint.localPosition, spawnPoint.rotation);
         theCharacter.transform.SetParent(spawnPoint);
         theCharacter.GetComponent<CharacterRunScript>().enabled = false;
         characterAnimationOnly = theCharacter.GetComponent<CharacterAnimationOnly>();
@@ -68,13 +80,17 @@ public class GolfGame : MonoBehaviour
 
     public void StartGame()
     {
-        GameObject theGolfBall = Instantiate(golfBall, golfBallSpawnPos.position, golfBallSpawnPos.rotation);
-        golfBallScript = theGolfBall.GetComponent<GolfBallScript>();
-        golfBallScript.SetGolfGameScript(this);
-        puttButton.SetActive(true);
+        if(wonGame == false)
+        {
+            GameObject theGolfBall = Instantiate(golfBall, golfBallSpawnPos.position, golfBallSpawnPos.rotation);
+            golfBallScript = theGolfBall.GetComponent<GolfBallScript>();
+            golfBallScript.SetGolfGameScript(this);
+            puttButton.SetActive(true);
 
-        // Particles
-        Instantiate(particle1, golfBallSpawnPos.position, golfBallSpawnPos.rotation);
+            // Particles
+            Instantiate(particle1, golfBallSpawnPos.position, golfBallSpawnPos.rotation);
+        }
+
     }
 
     public void HitBall()
@@ -88,10 +104,41 @@ public class GolfGame : MonoBehaviour
     {
         score += newScore;
         scoreText.SetText("Score: " + score.ToString());
+        if(score >=30)
+        {
+            GameManagerDog.instance.SavedCurrentHussyHick(true);
+            WonMiniGame();
+            wonGame = true;
+        }
     }
 
-    public void WonGame()
+    public void EndGameFunction()
     {
+        if (wonGame)
+        {
+            WonMiniGame();
+        }
+        else
+        {
+            LostMiniGame();
+        }
+    }
+
+    public void LostMiniGame()
+    {
+        Destroy(FindObjectOfType<GolfBallScript>().gameObject);
+        Destroy(puttButton);
+        characterAnimator.SetBool("Golf Idle", false);
+        characterAnimator.SetBool("Scared", true);
+        cameraAnimator.SetBool("Won", true);
+        crowd1.SetBool("Clap", true);
+        crowd2.SetBool("Celebrate", true);
+    }
+
+    public void WonMiniGame()
+    {
+        Destroy(FindObjectOfType<GolfBallScript>().gameObject);
+        Destroy(puttButton);
         characterAnimator.SetBool("Golf Idle", false);
         characterAnimator.SetBool("Celebrate", true);
         cameraAnimator.SetBool("Won", true);
@@ -99,20 +146,8 @@ public class GolfGame : MonoBehaviour
         crowd1.SetBool("Clap", true);
         crowd2.SetBool("Celebrate", true);
 
-        StartCoroutine("WaitToFinish");
     }
 
-    private IEnumerator WaitToFinish()
-    {
-        yield return new WaitForSeconds(2);
-        UnparentCamera();
-        GameManager.instance.LoadNextLevel();
-    }
 
-    public void UnparentCamera()
-    {
-        var theVirtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
-        theVirtualCamera.transform.SetParent(null);
-    }
 
 }

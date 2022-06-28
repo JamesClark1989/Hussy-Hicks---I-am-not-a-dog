@@ -31,4 +31,11 @@ public class CharacterDrawGameScript : MonoBehaviour
         anim.SetBool("Lost Draw", false);
         anim.SetTrigger("Quick Draw Idle");
     }
+
+    public void Celebrate()
+    {
+        anim.SetBool("Running", false);
+        anim.SetBool("Lost Draw", false);
+        anim.SetBool("Celebrate", true);
+    }
 }
