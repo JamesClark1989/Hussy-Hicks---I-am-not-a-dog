@@ -169,7 +169,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7785978, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1220,7 +1220,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerBar: {fileID: 2050738759}
   timer: 0
-  timerMax: 24
+  timerMax: 25
   barWidth: {x: 0, y: 0}
   currentlyPlaying: 0
   timerRadial: {fileID: 281372608}
@@ -1643,10 +1643,10 @@ MonoBehaviour:
   currentCharacter: 0
   savedHicksNumber: 
   miniGameRooms:
+  - {fileID: 6021890254377588639, guid: f59f66c61eadba54faa0708b03fcda87, type: 3}
   - {fileID: 6148206704087057805, guid: cccf83c7aae13db4e83cee03c94f0d85, type: 3}
   - {fileID: 536882964934863784, guid: 8eebcfae17af26841b771981135314b0, type: 3}
   - {fileID: 587580727851325600, guid: 72092e07661200c408ae2ce7f8f33424, type: 3}
-  - {fileID: 6021890254377588639, guid: f59f66c61eadba54faa0708b03fcda87, type: 3}
   - {fileID: 7815381319696083389, guid: 822eb3d6f3db48d4f8bd2c51d0106828, type: 3}
   - {fileID: 4204756356165136801, guid: da746ff158a2555468cb2323d547dc27, type: 3}
   - {fileID: 949997236272678125, guid: 3e85944ade6c0ed4cb03cfcbb1e11400, type: 3}

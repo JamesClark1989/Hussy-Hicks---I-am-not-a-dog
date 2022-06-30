@@ -60,6 +60,7 @@ public class GolfBallScript : MonoBehaviour
 
         
         Quaternion deltaRotation = Quaternion.Euler(EulerAngleVelocity * Time.fixedDeltaTime);
+        print(deltaRotation);
         rb.MoveRotation(rb.rotation * deltaRotation);
     }
 

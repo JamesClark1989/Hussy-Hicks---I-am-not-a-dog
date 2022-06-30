@@ -674,13 +674,17 @@ PrefabInstance:
       propertyPath: m_StaticShadowCaster
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6711589705700805152, guid: 52f91ace9140bf24182df029afcc8645, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 52f91ace9140bf24182df029afcc8645, type: 3}
       propertyPath: m_Name
       value: Street Lamp (3)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 52f91ace9140bf24182df029afcc8645, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8178865201035560467, guid: 52f91ace9140bf24182df029afcc8645, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1414,13 +1418,17 @@ PrefabInstance:
       propertyPath: m_StaticShadowCaster
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6711589705700805152, guid: 52f91ace9140bf24182df029afcc8645, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 52f91ace9140bf24182df029afcc8645, type: 3}
       propertyPath: m_Name
       value: Street Lamp (6)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 52f91ace9140bf24182df029afcc8645, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8178865201035560467, guid: 52f91ace9140bf24182df029afcc8645, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -2319,13 +2327,17 @@ PrefabInstance:
       propertyPath: m_StaticShadowCaster
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6711589705700805152, guid: 52f91ace9140bf24182df029afcc8645, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 52f91ace9140bf24182df029afcc8645, type: 3}
       propertyPath: m_Name
       value: Street Lamp (2)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 52f91ace9140bf24182df029afcc8645, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8178865201035560467, guid: 52f91ace9140bf24182df029afcc8645, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -2698,7 +2710,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &452772435
 Transform:
@@ -2938,13 +2950,17 @@ PrefabInstance:
       propertyPath: m_StaticShadowCaster
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6711589705700805152, guid: 52f91ace9140bf24182df029afcc8645, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 52f91ace9140bf24182df029afcc8645, type: 3}
       propertyPath: m_Name
       value: Street Lamp (4)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 52f91ace9140bf24182df029afcc8645, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8178865201035560467, guid: 52f91ace9140bf24182df029afcc8645, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -5959,13 +5975,17 @@ PrefabInstance:
       propertyPath: m_StaticShadowCaster
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6711589705700805152, guid: 52f91ace9140bf24182df029afcc8645, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 52f91ace9140bf24182df029afcc8645, type: 3}
       propertyPath: m_Name
       value: Street Lamp
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 52f91ace9140bf24182df029afcc8645, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8178865201035560467, guid: 52f91ace9140bf24182df029afcc8645, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -7561,13 +7581,17 @@ PrefabInstance:
       propertyPath: m_StaticShadowCaster
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6711589705700805152, guid: 52f91ace9140bf24182df029afcc8645, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 52f91ace9140bf24182df029afcc8645, type: 3}
       propertyPath: m_Name
       value: Street Lamp (7)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 52f91ace9140bf24182df029afcc8645, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8178865201035560467, guid: 52f91ace9140bf24182df029afcc8645, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -7657,13 +7681,17 @@ PrefabInstance:
       propertyPath: m_StaticShadowCaster
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6711589705700805152, guid: 52f91ace9140bf24182df029afcc8645, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 52f91ace9140bf24182df029afcc8645, type: 3}
       propertyPath: m_Name
       value: Street Lamp (1)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 52f91ace9140bf24182df029afcc8645, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8178865201035560467, guid: 52f91ace9140bf24182df029afcc8645, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -8004,13 +8032,17 @@ PrefabInstance:
       propertyPath: m_StaticShadowCaster
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6711589705700805152, guid: 52f91ace9140bf24182df029afcc8645, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 52f91ace9140bf24182df029afcc8645, type: 3}
       propertyPath: m_Name
       value: Street Lamp (5)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 52f91ace9140bf24182df029afcc8645, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8178865201035560467, guid: 52f91ace9140bf24182df029afcc8645, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -8788,7 +8820,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f30db2af22cc5d7418c1c370e2dd594f, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f30db2af22cc5d7418c1c370e2dd594f, type: 3}

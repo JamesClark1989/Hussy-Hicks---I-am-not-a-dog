@@ -114,6 +114,16 @@ public class GolfGame : MonoBehaviour, IEndOfMiniGame
 
     public void EndGameFunction()
     {
+        try
+        {
+            GameObject gBall = FindObjectOfType<GolfBallScript>().gameObject;
+            if (gBall != null)
+                Destroy(gBall);
+        }
+        catch
+        {
+
+        }
         if (wonGame)
         {
             WonMiniGame();
@@ -126,7 +136,9 @@ public class GolfGame : MonoBehaviour, IEndOfMiniGame
 
     public void LostMiniGame()
     {
-        Destroy(FindObjectOfType<GolfBallScript>().gameObject);
+
+
+
         Destroy(puttButton);
         characterAnimator.SetBool("Golf Idle", false);
         characterAnimator.SetBool("Scared", true);
@@ -137,7 +149,7 @@ public class GolfGame : MonoBehaviour, IEndOfMiniGame
 
     public void WonMiniGame()
     {
-        Destroy(FindObjectOfType<GolfBallScript>().gameObject);
+
         Destroy(puttButton);
         characterAnimator.SetBool("Golf Idle", false);
         characterAnimator.SetBool("Celebrate", true);

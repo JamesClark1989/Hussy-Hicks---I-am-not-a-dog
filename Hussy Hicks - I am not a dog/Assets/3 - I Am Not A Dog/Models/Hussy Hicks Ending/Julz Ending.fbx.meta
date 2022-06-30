@@ -1,0 +1,222 @@
+fileFormatVersion: 2
+guid: ba80d68873e2952419e53f5bd76b0d4a
+ModelImporter:
+  serializedVersion: 21202
+  internalIDToNameTable:
+  - first:
+      74: -3100369314251171874
+    second: Idle
+  - first:
+      74: 5522812681064789136
+    second: Run
+  - first:
+      74: -7919498327409302944
+    second: Quick Draw Idle
+  - first:
+      74: 1893393626920919930
+    second: Draw
+  - first:
+      74: -2695122191973022756
+    second: Draw Lose
+  - first:
+      74: 5539831331247536789
+    second: Jump
+  - first:
+      74: 4854380409165082432
+    second: Golf Putt Idle
+  - first:
+      74: -8788670449051934630
+    second: Golf Putt Putting
+  - first:
+      74: -3412073651334780487
+    second: Celebrate Putt Win
+  - first:
+      74: -4052984842002970190
+    second: Diving
+  - first:
+      74: -3548635922026297110
+    second: Dive 1
+  - first:
+      74: -583440515077472928
+    second: Dive 2
+  - first:
+      74: -3125451189326421608
+    second: Dive Fail 1
+  - first:
+      74: -6374218418283353933
+    second: Walk Loop
+  - first:
+      74: 7556688953170850545
+    second: Fall to Ground
+  - first:
+      74: 4992569446255256581
+    second: Walk Loop Opposite
+  - first:
+      74: 1888438983623830594
+    second: Hit Ground
+  - first:
+      74: -7142067619488645437
+    second: Driving
+  - first:
+      74: 3358933545137808837
+    second: Idle Stance 1
+  - first:
+      74: 2626222536154320223
+    second: Idle Stance 2
+  - first:
+      74: 2248002721719773091
+    second: Idle Stance 3
+  - first:
+      74: 896879036660958634
+    second: Idle Stance Look At Sign
+  - first:
+      74: 4395647155995863306
+    second: Ghulz Introduce
+  - first:
+      74: -2800350135942295921
+    second: Crazy bassy introduce
+  - first:
+      74: 7944521857475009833
+    second: Crowley Imposter Introduce
+  - first:
+      74: -1268956869685584248
+    second: Geezer Stench Introduction
+  - first:
+      74: 5730710032862228963
+    second: Look up and Down
+  - first:
+      74: 6621692263556685780
+    second: Scared 1
+  - first:
+      74: -128453577411252221
+    second: Geezer Pose
+  - first:
+      74: 7526339039954429699
+    second: Fight Stance 1
+  - first:
+      74: -3536734898145547518
+    second: Fight Stance 2
+  - first:
+      74: 7612528035783871083
+    second: Fight Stance 3
+  - first:
+      74: -5503730590575402029
+    second: Fight Stance 4
+  - first:
+      74: 3557202399983044040
+    second: Scared Cage 1
+  - first:
+      74: -3398942154969580939
+    second: Scared Cage 2
+  - first:
+      74: -8357890254012456176
+    second: Scared Cage 3
+  - first:
+      74: -8927165734144830945
+    second: Scared Cage 4
+  - first:
+      74: 5917537482288442099
+    second: Fall
+  - first:
+      74: -2035627125579364511
+    second: Julz Play Strat
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 1
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

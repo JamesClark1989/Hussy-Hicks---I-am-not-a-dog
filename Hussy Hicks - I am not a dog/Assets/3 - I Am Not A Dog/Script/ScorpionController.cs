@@ -60,7 +60,7 @@ public class ScorpionController : MonoBehaviour
     public void ResetTimerAfterAttack()
     {
         timer = timerMax;
-        timerMax -= 0.1f;
+        //timerMax -= 0.1f;
         battling = true;
     }
 
@@ -72,7 +72,7 @@ public class ScorpionController : MonoBehaviour
 
     public void ContinueBattling()
     {
-        timer = timerMax;
+        timer = 1.5f;
         battling = true;
     }
 

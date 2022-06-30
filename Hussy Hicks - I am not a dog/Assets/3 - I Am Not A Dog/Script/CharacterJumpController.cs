@@ -18,7 +18,7 @@ public class CharacterJumpController : MonoBehaviour
 
     }
 
-    void Update()
+    void FixedUpdate()
     {
         float dist = Vector3.Distance(targetPoint, transform.position);
         if (dist < 0.2f)
@@ -50,7 +50,7 @@ public class CharacterJumpController : MonoBehaviour
             
             offset = offset.normalized * moveSpeed;
             //normalize it and account for movement speed.
-            characterController.Move(offset * Time.deltaTime);
+            characterController.Move(offset * Time.fixedDeltaTime);
             //actually move the character.
         }
     }

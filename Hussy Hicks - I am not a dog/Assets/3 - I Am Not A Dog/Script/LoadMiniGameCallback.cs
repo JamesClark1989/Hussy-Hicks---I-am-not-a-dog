@@ -62,7 +62,6 @@ public class LoadMiniGameCallback : MonoBehaviour
         GameManagerDog.instance.SavedCurrentHussyHick(false);
         // Call end game function on mini game
         GameManagerDog.instance.TriggerMiniGameEndScene();
-        yield return new WaitForSeconds(2);
         GameManagerDog.instance.ShowSavedOrNotSavedText();
         GameManagerDog.instance.CurrentMiniGameFinished();
         // Might need to fade out

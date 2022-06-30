@@ -133,9 +133,9 @@ MonoBehaviour:
   arrow: {fileID: 4233144577350836192}
   hitTest: 0
   putting: 1
-  positiveRotation: 60
-  negativeRotation: -60
-  rotationSpeed: 50
+  positiveRotation: 90
+  negativeRotation: -90
+  rotationSpeed: 90
   EulerAngleVelocity: {x: 0, y: 0, z: 0}
   golfGame: {fileID: 0}
 --- !u!1001 &3926663067782554289
