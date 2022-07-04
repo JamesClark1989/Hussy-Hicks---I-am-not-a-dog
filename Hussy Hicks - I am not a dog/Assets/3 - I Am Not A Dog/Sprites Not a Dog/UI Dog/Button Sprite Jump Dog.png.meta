@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: d9662c78aca5f3d4b8c7b46b8198452e
+guid: 25c8a84f3803e1e4a9360575433ebe60
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -597188345251438812
-    second: Button_Sprite_0
+      213: 1346851412714056574
+    second: Button Sprite Jump_0
   - first:
-      213: -4735014759192805997
-    second: Button_Sprite_1
+      213: -3730491950910866686
+    second: Button Sprite Jump_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -49,7 +49,7 @@ TextureImporter:
   lightmap: 0
   compressionQuality: 50
   spriteMode: 2
-  spriteExtrude: 0
+  spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
@@ -122,7 +122,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Button_Sprite_0
+      name: Button Sprite Jump_0_Dog
       rect:
         serializedVersion: 2
         x: 0
@@ -130,20 +130,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 42fd8413d5c56b7f0800000000000000
-      internalID: -597188345251438812
+      spriteID: e7bed04593af0b210800000000000000
+      internalID: 1346851412714056574
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Button_Sprite_1
+      name: Button Sprite Jump_1_Dog
       rect:
         serializedVersion: 2
         x: 16
@@ -151,14 +151,14 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 39db418e929d94eb0800000000000000
-      internalID: -4735014759192805997
+      spriteID: 20bf08ce551aa3cc0800000000000000
+      internalID: -3730491950910866686
       vertices: []
       indices: 
       edges: []
@@ -174,8 +174,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Button_Sprite_1: -4735014759192805997
-      Button_Sprite_0: -597188345251438812
+      Button Sprite Jump_1_Dog: -3730491950910866686
+      Button Sprite Jump_0_Dog: 1346851412714056574
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

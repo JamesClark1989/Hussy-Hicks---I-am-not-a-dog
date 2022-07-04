@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 25c8a84f3803e1e4a9360575433ebe60
+guid: 3aecc03bd0e002e4aa45b79f8da22731
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1346851412714056574
-    second: Button Sprite Jump_0
+      213: -5366145593982549846
+    second: Button_Sprite_Gold_0
   - first:
-      213: -3730491950910866686
-    second: Button Sprite Jump_1
+      213: 5327555114142778652
+    second: Button_Sprite_Gold_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -95,18 +95,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -122,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Button Sprite Jump_0
+      name: Button_Sprite_Gold_0_Dog
       rect:
         serializedVersion: 2
         x: 0
@@ -130,20 +118,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e7bed04593af0b210800000000000000
-      internalID: 1346851412714056574
+      spriteID: aa084a9630f9785b0800000000000000
+      internalID: -5366145593982549846
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Button Sprite Jump_1
+      name: Button_Sprite_Gold_1_Dog
       rect:
         serializedVersion: 2
         x: 16
@@ -151,14 +139,14 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 1, y: 1, z: 1, w: 1}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 20bf08ce551aa3cc0800000000000000
-      internalID: -3730491950910866686
+      spriteID: c15cbc356274fe940800000000000000
+      internalID: 5327555114142778652
       vertices: []
       indices: 
       edges: []
@@ -174,8 +162,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Button Sprite Jump_1: -3730491950910866686
-      Button Sprite Jump_0: 1346851412714056574
+      Button_Sprite_Gold_1_Dog: 5327555114142778652
+      Button_Sprite_Gold_0_Dog: -5366145593982549846
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

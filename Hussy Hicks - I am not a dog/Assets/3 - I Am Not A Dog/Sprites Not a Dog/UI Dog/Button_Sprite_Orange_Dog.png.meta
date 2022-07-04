@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 0804a24f64551ab43a4a0b6152eac9d8
+guid: 165fbc7a3c237de41b84ce47bde0ea70
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8064322805687373760
-    second: Button Sprite Left_0
+      213: -62131632379958107
+    second: Button_Sprite_Orange_0
   - first:
-      213: -7345035204605188587
-    second: Button Sprite Left_1
+      213: 2140007628358531181
+    second: Button_Sprite_Orange_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -50,7 +50,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 16
@@ -122,7 +122,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Button Sprite Left_0
+      name: Button_Sprite_Orange_0_Dog
       rect:
         serializedVersion: 2
         x: 0
@@ -130,20 +130,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 1, y: 4, z: 1, w: 1}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0cfc31b7dda3aef60800000000000000
-      internalID: 8064322805687373760
+      spriteID: 5ac6daa0c93432ff0800000000000000
+      internalID: -62131632379958107
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Button Sprite Left_1
+      name: Button_Sprite_Orange_1_Dog
       rect:
         serializedVersion: 2
         x: 16
@@ -151,14 +151,14 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 1, y: 2, z: 1, w: 3}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 516e4c6a561311a90800000000000000
-      internalID: -7345035204605188587
+      spriteID: d68bfe88995d2bd10800000000000000
+      internalID: 2140007628358531181
       vertices: []
       indices: 
       edges: []
@@ -174,8 +174,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Button Sprite Left_1: -7345035204605188587
-      Button Sprite Left_0: 8064322805687373760
+      Button_Sprite_Orange_1_Dog: 2140007628358531181
+      Button_Sprite_Orange_0_Dog: -62131632379958107
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

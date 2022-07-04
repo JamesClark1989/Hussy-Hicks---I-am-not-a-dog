@@ -15,7 +15,7 @@ public class StartNextDogSceneInTimeline : MonoBehaviour
     public void LoadTheNextScene()
     {
         loadingScreen.SetActive(true);
-        scenesToLoad.Add(SceneManager.LoadSceneAsync("Mini Games Scene"));
+        scenesToLoad.Add(SceneManager.LoadSceneAsync(sceneName));
         StartCoroutine(LoadingScreen());
         //SceneManager.LoadScene(sceneName);
     }

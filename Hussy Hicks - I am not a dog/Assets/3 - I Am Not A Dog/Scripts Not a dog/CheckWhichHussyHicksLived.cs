@@ -33,44 +33,49 @@ public class CheckWhichHussyHicksLived : MonoBehaviour
 
     void RemoveHussys()
     {
-        if (!savedHicks.Contains(JulzObj))
-        {
-            Destroy(Julz);
-            Destroy(Strat);
-        }        
-        
-        if (!savedHicks.Contains(LeesaObj))
-        {
-            Destroy(Leesa);
-            Destroy(Tambourine);
-        }
-
-        if (!savedHicks.Contains(AliObj))
-        {
-            Destroy(Ali);
-            Destroy(Drums);
-        }
-
-        if (!savedHicks.Contains(TraceObj))
-        {
-            Destroy(Trace);
-            Destroy(Bass);
-        }
-
-        if(savedHicks.Count == 0)
+        if (savedHicks.Count == 0)
         {
             noHussyhicksSaved.SetActive(true);
         }
-        else if(savedHicks.Contains(JulzObj) && savedHicks.Contains(LeesaObj) && !savedHicks.Contains(AliObj) && !savedHicks.Contains(TraceObj))
-        {
-            julzAndLeesaOnly.SetActive(true);
-            julzAndLeesa = true;
-        }
         else
         {
-            regularTimeline.SetActive(true);
-            julzAndLeesa = false;
+            if (!savedHicks.Contains(JulzObj))
+            {
+                Destroy(Julz);
+                Destroy(Strat);
+            }
+
+            if (!savedHicks.Contains(LeesaObj))
+            {
+                Destroy(Leesa);
+                Destroy(Tambourine);
+            }
+
+            if (!savedHicks.Contains(AliObj))
+            {
+                Destroy(Ali);
+                Destroy(Drums);
+            }
+
+            if (!savedHicks.Contains(TraceObj))
+            {
+                Destroy(Trace);
+                Destroy(Bass);
+            }
+
+
+            if (savedHicks.Contains(JulzObj) && savedHicks.Contains(LeesaObj) && !savedHicks.Contains(AliObj) && !savedHicks.Contains(TraceObj))
+            {
+                julzAndLeesaOnly.SetActive(true);
+                julzAndLeesa = true;
+            }
+            else
+            {
+                regularTimeline.SetActive(true);
+                julzAndLeesa = false;
+            }
         }
+
     }
 
     public bool CheckIfJulzAndLeesa()

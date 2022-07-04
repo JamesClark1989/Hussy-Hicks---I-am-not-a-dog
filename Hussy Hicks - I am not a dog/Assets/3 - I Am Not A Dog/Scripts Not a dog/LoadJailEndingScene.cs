@@ -5,6 +5,6 @@ public class LoadJailEndingScene : MonoBehaviour
 {
     public void LoadJailScene()
     {
-        SceneManager.LoadScene("Jail Ending Scene");
+        SceneManager.LoadScene("Hussy Hack Battle");
     }
 }
