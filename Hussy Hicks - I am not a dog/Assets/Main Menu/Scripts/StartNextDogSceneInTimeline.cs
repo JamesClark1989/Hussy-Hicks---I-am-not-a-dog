@@ -16,8 +16,6 @@ public class StartNextDogSceneInTimeline : MonoBehaviour
     {
         loadingScreen.SetActive(true);
         scenesToLoad.Add(SceneManager.LoadSceneAsync("Mini Games Scene"));
-        scenesToLoad.Add(SceneManager.LoadSceneAsync("Hussy Hack Battle", LoadSceneMode.Additive));
-        scenesToLoad.Add(SceneManager.LoadSceneAsync("Dungeon Ending", LoadSceneMode.Additive));
         StartCoroutine(LoadingScreen());
         //SceneManager.LoadScene(sceneName);
     }
