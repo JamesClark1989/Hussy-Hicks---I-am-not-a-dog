@@ -335,6 +335,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TabletTag: L
   cthuluGame: {fileID: 4204756356165136815}
+  randomiseCthuluLetters: {fileID: 4204756355680624374}
 --- !u!1 &4204756354921270056
 GameObject:
   m_ObjectHideFlags: 0
@@ -530,6 +531,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TabletTag: H
   cthuluGame: {fileID: 4204756356165136815}
+  randomiseCthuluLetters: {fileID: 4204756355680624374}
 --- !u!1 &4204756355048955832
 GameObject:
   m_ObjectHideFlags: 0
@@ -1256,6 +1258,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TabletTag: T
   cthuluGame: {fileID: 4204756356165136815}
+  randomiseCthuluLetters: {fileID: 4204756355680624374}
 --- !u!1 &4204756355516996366
 GameObject:
   m_ObjectHideFlags: 0
@@ -2008,6 +2011,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TabletTag: C
   cthuluGame: {fileID: 4204756356165136815}
+  randomiseCthuluLetters: {fileID: 4204756355680624374}
 --- !u!1 &4204756356165136801
 GameObject:
   m_ObjectHideFlags: 0
@@ -7496,6 +7500,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TabletTag: U
   cthuluGame: {fileID: 4204756356165136815}
+  randomiseCthuluLetters: {fileID: 4204756355680624374}
 --- !u!1 &4204756356816845161
 GameObject:
   m_ObjectHideFlags: 0
@@ -7587,6 +7592,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TabletTag: U
   cthuluGame: {fileID: 4204756356165136815}
+  randomiseCthuluLetters: {fileID: 4204756355680624374}
 --- !u!1 &4204756356859067535
 GameObject:
   m_ObjectHideFlags: 0
@@ -7815,7 +7821,7 @@ GameObject:
   - component: {fileID: 8876373308101217150}
   - component: {fileID: 8622242059417663884}
   m_Layer: 0
-  m_Name: Cthulul Light
+  m_Name: Cthulu Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

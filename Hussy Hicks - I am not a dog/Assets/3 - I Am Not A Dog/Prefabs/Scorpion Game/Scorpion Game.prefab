@@ -1634,7 +1634,7 @@ MonoBehaviour:
   gateController: {fileID: 6021890253746878211}
   scorpionDodgeGame: {fileID: 6021890254377588608}
   attackCounter: 0
-  attackCounterMax: 11
+  attackCounterMax: 9
   timerMax: 1
   timer: 0
   battling: 0

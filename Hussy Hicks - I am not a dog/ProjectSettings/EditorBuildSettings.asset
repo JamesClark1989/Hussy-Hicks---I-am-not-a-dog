@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/3 - I Am Not A Dog/Scenes/Hussy Hack Battle.unity
     guid: a3c417d18861205428c6836380e4b3c1
+  - enabled: 1
+    path: Assets/3 - I Am Not A Dog/Scenes/Dungeon Ending.unity
+    guid: 45b68c01b080b424c92d26f8770ff15a
+  - enabled: 1
+    path: Assets/3 - I Am Not A Dog/Scenes/Jail Ending Scene.unity
+    guid: 01e2e629c2410bb4d80c744e46fc102d
   m_configObjects: {}
