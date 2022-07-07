@@ -1,0 +1,31 @@
+Thanks for downloading STARTLING
+
+DESCRIPTION:
+
+Take me to your leader! The genesis of STARTLING was a reproduction in miniature of a cover from that old pulp Science Fiction magazine, "Startling Stories." I thought the masthead appealing, so I ventured to extrapolate an entire alphabet with only the characters A,E,G,I,O,L,N,R,S, and T as my guide. The result is a mixed bag that seems a heckuva lot more wacky than the venerable nameplate that sired this misbegotten font. Sets well at point sizes 18 and above.
+
+Incidentally, I recently noticed that a very similar font, one also obviously modeled on the "Startling Stories" masthead, was used for the opening titles of that infectious, goofy 1989 film "Earth Girls Are Easy."
+
+Note: This font has no punctuation whatsoever. Have fun with it anyway.
+
+This font is free to use in all your designs and layouts. STARTLING may be duplicated and given away as often as you see fit, as long as you INCLUDE THIS README FILE. Please don't rename it, and/or tell people you made it, because then really bad things could happen to you--possibly a harrowing alien abduction involving very painful rectal probes and a really obnoxious redneck roommate from a trailer park somewhere in Arkansas. By the way, if you use this in a commercial layout, please drop by my website and drop me a line. I'm always curious about how these things get used.
+
+INSTALLING STARTLING:
+
+MACINTOSH:
+For System 7 and above, just drag both the "Startling.bmap" and the "Start" files onto your system folder icon. Finder will prompt you whether or not to add them to your Fonts folder; click OK and you're set! If you're using font management software like Suitcase, consult your user's manual for further instruction.
+
+WINDOWS:
+
+Windows 3.1: Open the control panel and choose FONTS
+Click the ADD button, find the TrueType font, and click OK.
+
+Windows 95 and above: Open the Windows FONT folder; click, drag, and drop the TrueType font inside.
+
+DISCLAIMER (This notice MUST be included with any distribution):
+
+No guarantee of any kind is made that STARTLING will work on your machine. Dave Bastian MAKES NO WARRANTIES, EXPRESS OR IMPLIED, REGARDING THIS FONT. Dave Bastian DOES NOT WARRANT, GUARANTEE OR MAKE ANY REPRESENATIONS REGARDING THE USE OR THE RESULTS OF THE USE OF THIS FONT IN TERMS OF ITS RELIABILITY, OR OTHERWISE. IN NO EVENT WILL Dave Bastian BE LIABLE TO YOU FOR ANY DAMAGES ARISING OUT OF THE USE OR INABILITY TO USE Startling. Although this font may not be suitable for any of your purposes, you gotta admit it don't look too bad.
+
+Please take a moment to mention where you found STARTLING and feel free to comment or criticize, care of fonts@davebastian.com
+
+Other free fonts available at <http://www.davebastian.com>
